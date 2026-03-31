@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Network Automation - Learn by Diagram | Israr Sadaq</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', monospace;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+            color: #ffffff;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #ffd700;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #cbd5e1;
+            font-size: 16px;
+        }
+
+        .badge {
+            background: #1e293b;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin: 5px;
+            border-left: 2px solid #ffd700;
+        }
+
+        /* What is Docker Section */
+        .docker-explained {
+            background: #1a1f2e;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a4a;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .comparison {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .comparison-card {
+            background: #0f1420;
+            border-radius: 16px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+        }
+
+        .comparison-card h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: #1a1f2e;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a4a;
+        }
+
+        .docker-layer {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .docker-host {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid #ffd700;
+        }
+
+        .docker-host-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .containers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .container-card {
+            background: #0f1420;
+            border-radius: 16px;
+            padding: 15px;
+            width: 180px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #2a2a4a;
+        }
+
+        .container-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+        }
+
+        .container-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .container-name {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .container-desc {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+
+        /* Component Details Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1a1f2e;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            padding: 25px;
+            border: 1px solid #ffd700;
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .modal-body {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .close-btn {
+            background: #ffd700;
+            color: #0a0e1a;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram {
+            background: #1a1f2e;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a4a;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .flow-box {
+            background: #0f1420;
+            border-radius: 12px;
+            padding: 15px 25px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #ffd700;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: #0f1420;
+            border-radius: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            padding: 20px;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>🐳 DOCKER NETWORK AUTOMATION</h1>
+        <p>Learn Docker & Network Monitoring - Step by Step</p>
+        <div>
+            <span class="badge">🎓 Beginner Friendly</span>
+            <span class="badge">📡 Interactive Diagram</span>
+            <span class="badge">🐳 Docker Compose</span>
+            <span class="badge">📊 Grafana + InfluxDB</span>
+        </div>
+        <div style="margin-top: 12px;">Network Engineer: Israr Sadaq | CCNA | CCNP | Berlin, Germany</div>
+    </div>
+
+    <!-- What is Docker? -->
+    <div class="docker-explained">
+        <div class="section-title">📚 WHAT IS DOCKER?</div>
+        <div class="comparison">
+            <div class="comparison-card">
+                <h3>❌ WITHOUT DOCKER</h3>
+                <p>App works on Windows ❌</p>
+                <p>App crashes on Linux ❌</p>
+                <p>Missing libraries ❌</p>
+                <p>Manual setup every time ❌</p>
+            </div>
+            <div class="comparison-card">
+                <h3>✅ WITH DOCKER</h3>
+                <p>App works ANYWHERE ✅</p>
+                <p>Everything packaged together ✅</p>
+                <p>One command to start ✅</p>
+                <p>Portable and consistent ✅</p>
+            </div>
+        </div>
+        <div class="legend" style="margin-top: 20px;">
+            <div class="legend-item"><div class="legend-color" style="background: #1e3c72;"></div><span>Docker Container</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: #ffd700;"></div><span>Application + Dependencies</span></div>
+            <div class="legend-item"><div class="legend-color" style="background: #22c55e;"></div><span>Runs on any OS</span></div>
+        </div>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="architecture">
+        <div class="section-title">🏗️ DOCKER COMPOSE ARCHITECTURE</div>
+        
+        <div class="docker-layer">
+            <div class="docker-host">
+                <div class="docker-host-title">🐳 DOCKER HOST (Your Computer)</div>
+                <div class="containers">
+                    <div class="container-card" onclick="showModal('Telegraf', 'Telegraf is a metrics collector. It collects data from your system (CPU, memory, network) and sends it to InfluxDB. Think of it as a sensor that measures temperature every few seconds.')">
+                        <div class="container-icon">📡</div>
+                        <div class="container-name">Telegraf</div>
+                        <div class="container-desc">Metrics Collector</div>
+                    </div>
+                    <div class="container-card" onclick="showModal('InfluxDB', 'InfluxDB is a time-series database. It stores all the metrics with timestamps. Think of it as a notebook where you write down temperature every minute.')">
+                        <div class="container-icon">💾</div>
+                        <div class="container-name">InfluxDB</div>
+                        <div class="container-desc">Time-Series DB</div>
+                    </div>
+                    <div class="container-card" onclick="showModal('Grafana', 'Grafana is a visualization dashboard. It creates beautiful charts and graphs from the data in InfluxDB. Think of it as a TV screen showing temperature graphs.')">
+                        <div class="container-icon">📊</div>
+                        <div class="container-name">Grafana</div>
+                        <div class="container-desc">Dashboard</div>
+                    </div>
+                    <div class="container-card" onclick="showModal('NetBox', 'NetBox is IP Address Management (IPAM). It tracks all IP addresses in your network. Think of it as an Excel sheet for IP addresses.')">
+                        <div class="container-icon">🌐</div>
+                        <div class="container-name">NetBox</div>
+                        <div class="container-desc">IPAM</div>
+                    </div>
+                    <div class="container-card" onclick="showModal('Nginx', 'Nginx is a web server and reverse proxy. It directs traffic to the right service. Think of it as a receptionist who directs visitors to the right office.')">
+                        <div class="container-icon">🔄</div>
+                        <div class="container-name">Nginx</div>
+                        <div class="container-desc">Reverse Proxy</div>
+                    </div>
+                    <div class="container-card" onclick="showModal('Python API', 'Python API is our custom automation backend. It provides endpoints to ping devices, backup configs, and manage network devices. Think of it as a remote control for your network.')">
+                        <div class="container-icon">🐍</div>
+                        <div class="container-name">Python API</div>
+                        <div class="container-desc">Automation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend" style="margin-top: 20px;">
+            <div class="legend-item"><div class="legend-color" style="background: #1e3c72;"></div><span>Click any container to learn more!</span></div>
+        </div>
+    </div>
+
+    <!-- Data Flow Diagram -->
+    <div class="flow-diagram">
+        <div class="section-title">🔄 HOW DATA FLOWS</div>
+        
+        <div class="flow-step">
+            <div class="flow-box">📡 Telegraf<br><small>Collects Metrics</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">💾 InfluxDB<br><small>Stores Data</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📊 Grafana<br><small>Shows Charts</small></div>
+        </div>
+        
+        <div class="flow-step">
+            <div class="flow-box">🌐 User Browser<br><small>Requests Dashboard</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🔄 Nginx<br><small>Routes Request</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📊 Grafana<br><small>Displays Dashboard</small></div>
+        </div>
+        
+        <div class="flow-step">
+            <div class="flow-box">🐍 Python API<br><small>Receives Request</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">💾 InfluxDB<br><small>Queries Data</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🐍 Python API<br><small>Returns Response</small></div>
+        </div>
+    </div>
+
+    <!-- Component Summary Table -->
+    <div class="architecture">
+        <div class="section-title">📋 COMPONENT SUMMARY</div>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <th style="padding: 12px; text-align: left;">Component</th>
+                        <th style="padding: 12px; text-align: left;">What It Does</th>
+                        <th style="padding: 12px; text-align: left;">Analogy</th>
+                        <th style="padding: 12px; text-align: left;">Port</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">🐳 Docker Compose</td>
+                        <td style="padding: 12px;">Orchestrates all containers</td>
+                        <td style="padding: 12px;">Restaurant Manager</td>
+                        <td style="padding: 12px;">-</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">📡 Telegraf</td>
+                        <td style="padding: 12px;">Collects metrics (CPU, memory, network)</td>
+                        <td style="padding: 12px;">Temperature Sensor</td>
+                        <td style="padding: 12px;">-</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">💾 InfluxDB</td>
+                        <td style="padding: 12px;">Stores time-series data</td>
+                        <td style="padding: 12px;">Notebook with timestamps</td>
+                        <td style="padding: 12px;">8086</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">📊 Grafana</td>
+                        <td style="padding: 12px;">Creates dashboards and charts</td>
+                        <td style="padding: 12px;">TV Screen with graphs</td>
+                        <td style="padding: 12px;">3000</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">🌐 NetBox</td>
+                        <td style="padding: 12px;">IP Address Management</td>
+                        <td style="padding: 12px;">IP Address Excel Sheet</td>
+                        <td style="padding: 12px;">8000</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2a2a4a;">
+                        <td style="padding: 12px;">🔄 Nginx</td>
+                        <td style="padding: 12px;">Reverse proxy & web server</td>
+                        <td style="padding: 12px;">Receptionist</td>
+                        <td style="padding: 12px;">80</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px;">🐍 Python API</td>
+                        <td style="padding: 12px;">Network automation backend</td>
+                        <td style="padding: 12px;">Remote Control</td>
+                        <td style="padding: 12px;">5000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2026 Israr Sadaq | Docker Network Automation | CCNA | CCNP | Berlin, Germany</p>
+        <p>📧 israrsadaq057@gmail.com | 🔗 GitHub: https://github.com/israrsadaq057-art</p>
+        <p>💡 Click on any container in the diagram to learn more about it!</p>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="modalTitle">Component Details</div>
+        <div class="modal-body" id="modalBody"></div>
+        <button class="close-btn" onclick="closeModal()">Got it!</button>
+    </div>
+</div>
+
+<script>
+    function showModal(title, details) {
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalBody').innerHTML = details;
+        document.getElementById('infoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('infoModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+</script>
+</body>
+</html>

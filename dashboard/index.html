@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Network Automation Platform</title>
+    <style>
+        body { font-family: Arial; background: #0a0e1a; color: white; text-align: center; padding: 30px; }
+        h1 { color: #ffd700; font-size: 28px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 20px auto; }
+        .card { background: #1a1f2e; padding: 25px; border-radius: 12px; border: 1px solid #333; }
+        .card h3 { color: #ffd700; margin-bottom: 10px; }
+        .card a { color: #22c55e; text-decoration: none; font-size: 16px; }
+        .card a:hover { text-decoration: underline; }
+        .status { color: #22c55e; font-size: 14px; margin-top: 8px; }
+        .footer { margin-top: 30px; color: #888; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>Docker Network Automation Platform</h1>
+    <p>Network Engineer: Israr Sadaq | CCNA | CCNP | Berlin, Germany</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Grafana Dashboard</h3>
+            <p>CPU, Memory, Disk, Network Graphs</p>
+            <a href="http://localhost:3000" target="_blank">Open Grafana</a>
+            <div class="status">Running on port 3000</div>
+        </div>
+        <div class="card">
+            <h3>InfluxDB Database</h3>
+            <p>Time Series Metrics Storage</p>
+            <a href="http://localhost:8086" target="_blank">Open InfluxDB</a>
+            <div class="status">Running on port 8086</div>
+        </div>
+        <div class="card">
+            <h3>Python API</h3>
+            <p>Network Automation Endpoints</p>
+            <a href="http://localhost:5000" target="_blank">Open API</a>
+            <div class="status">Running on port 5000</div>
+        </div>
+        <div class="card">
+            <h3>API Endpoints</h3>
+            <p>
+                <a href="http://localhost:5000/api/health" target="_blank">/api/health</a><br>
+                <a href="http://localhost:5000/api/devices" target="_blank">/api/devices</a><br>
+                <a href="http://localhost:5000/api/devices/status" target="_blank">/api/devices/status</a><br>
+                <a href="http://localhost:5000/api/metrics" target="_blank">/api/metrics</a><br>
+                <a href="http://localhost:5000/api/network/scan" target="_blank">/api/network/scan</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Telegraf collecting metrics every 10s | 5 Services Running</p>
+        <p>israrsadaq057@gmail.com</p>
+    </div>
+</body>
+</html>
