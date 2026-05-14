@@ -1,4 +1,4 @@
-# 🐳 Docker Network Automation Platform
+# Docker Network Automation Platform
 
 ## Complete Containerized Network Monitoring Stack
 
@@ -10,17 +10,17 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
-**[📊 Live Demo](#)** | **[🐳 Docker Hub](#)** | **[📁 GitHub](https://github.com/israrsadaq057-art/Docker-Network-Automation)**
+**[Live Demo](#)** | **[Docker Hub](#)** | **[GitHub](https://github.com/israrsadaq057-art/Docker-Network-Automation)**
 
 </div>
 
 ---
 
-## 👨‍💻 Network Automation Specialist
+## Network Automation Specialist
 
 **Israr Sadaq** | CCNA | CCNP | Network Automation Specialist
 
-📍 Berlin, Germany | 📧 israrsadaq057@gmail.com | 📱 +49 152525267799
+Berlin, Germany | israrsadaq057@gmail.com | +49 152525267799
 
 <div align="center">
   
@@ -31,23 +31,23 @@
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 This project is a **complete containerized network monitoring platform** built with Docker. It provides real-time system metrics collection, time-series data storage, and beautiful visualization dashboards - all running in containers.
 
  
 ---
 
-## 🚀 Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
-| **📡 Real-time Metrics** | Collects CPU, Memory, Disk, Network stats via Telegraf |
-| **💾 Time-Series Database** | InfluxDB for efficient metric storage |
-| **📊 Beautiful Dashboards** | Grafana with pre-configured panels |
-| **🐳 Containerized** | All services run in Docker containers |
-| **🔧 Easy Deployment** | Single command to start everything |
-| **🌐 Web Dashboard** | Custom HTML dashboard for quick overview |
+| **Real-time Metrics** | Collects CPU, Memory, Disk, Network stats via Telegraf |
+| **Time-Series Database** | InfluxDB for efficient metric storage |
+| **Beautiful Dashboards** | Grafana with pre-configured panels |
+| **Containerized** | All services run in Docker containers |
+| **Easy Deployment** | Single command to start everything |
+| **Web Dashboard** | Custom HTML dashboard for quick overview |
 
 ---
 
@@ -63,7 +63,7 @@ This project is a **complete containerized network monitoring platform** built w
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 Docker-Network-Automation/
 │
 ├── docker-compose.yml # Main Docker Compose configuration
@@ -99,14 +99,14 @@ Docker-Network-Automation/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Docker Desktop installed and running
 - 4GB+ RAM available
 - Git (optional, for cloning)
 
- ## 🚀 Step 1: Start All Services
+ ## Step 1: Start All Services
 
 ```bash
 # Start all containers
@@ -118,7 +118,7 @@ docker-compose ps
 
 ---
 
-## 🌐 Step 2: Access Services
+## Step 2: Access Services
 
 | Service     | URL                   | Credentials          |
 |------------|------------------------|----------------------|
@@ -129,7 +129,7 @@ docker-compose ps
 
 ---
 
-## 📊 Step 3: View Metrics in Grafana
+## Step 3: View Metrics in Grafana
 
 Open in your browser:
 
@@ -144,7 +144,7 @@ Navigate to:
 
 ---
 
-## 📈 Grafana Dashboard
+## Grafana Dashboard
 
 | Panel           | Description                          |
 |-----------------|--------------------------------------|
@@ -156,7 +156,7 @@ Navigate to:
 
 ---
 
-## 📥 Import Custom Dashboard
+## Import Custom Dashboard
 
 1. Download JSON file from `dashboards/` folder  
 2. Open Grafana  
@@ -165,7 +165,7 @@ Navigate to:
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 ### Telegraf Configuration
 
@@ -205,7 +205,7 @@ environment:
 
 ---
 
-## 🛠️ Management Commands
+## Management Commands
 
 ### PowerShell
 
@@ -235,7 +235,7 @@ docker-compose down -v
 
 ---
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 | Metric          | Value              |
 |-----------------|--------------------|
@@ -247,7 +247,7 @@ docker-compose down -v
 
 ---
 
-## 🔌 TSN Telemetry Integration
+## TSN Telemetry Integration
 
 - Python API collects TSN metrics  
 - Data stored in InfluxDB  
@@ -264,7 +264,7 @@ done
 
 ---
 
-## 📚 Learning Resources
+## Learning Resources
 
 ```bash
 learning/docker_explained.html
@@ -272,7 +272,7 @@ learning/docker_explained.html
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Check running containers
@@ -287,7 +287,7 @@ curl http://localhost:3000/api/health
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ```bash
 # View logs
@@ -316,7 +316,7 @@ sudo chown -R $USER:$USER data/
 
 ---
 
-## 🎯 Next Steps
+## Next Steps
 
 - Add TSN telemetry integration  
 - Create more Grafana dashboards  
@@ -327,7 +327,7 @@ sudo chown -R $USER:$USER data/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 ```bash
 git checkout -b feature-name
@@ -343,7 +343,7 @@ MIT License — see `LICENSE.txt`
 
 ---
 
-## 📞 Contact
+## Contact
 
 **Israr Sadaq**  
 Network Automation Specialist (CCNA, CCNP)
@@ -356,13 +356,13 @@ Network Automation Specialist (CCNA, CCNP)
 
 ---
 
-## ⭐ Support
+## Support
 
 If you found this project useful, give it a ⭐
 
 ---
 
-**Built with ❤️ for Docker & Network Monitoring**  
+**Built with for Docker & Network Monitoring**  
 © 2026 Israr Sadaq
 ---
 
