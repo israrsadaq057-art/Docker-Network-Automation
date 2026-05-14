@@ -51,7 +51,7 @@ This project is a **complete containerized network monitoring platform** built w
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Component | Technology | Purpose | Port |
 |-----------|------------|---------|------|
